@@ -1,0 +1,35 @@
+html{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-size: 18px;
+}
+body {
+    height: 100%;
+}
+
+.hitam {
+    background-color: black;
+    color: white;
+}
+
+.putih {
+    background-color: white;
+    color : black;
+}
+
+.campur1 {
+    background-color:deepskyblue;
+    color: deeppink;
+}
+.kotak {
+    
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    width: 50%;
+    height: 50%;
+    top: 0%;
+    left: 0%;
+    
+}
