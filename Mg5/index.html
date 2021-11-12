@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.5.1.min.js"></script>
+    <title>Praktikum Pemrograman Web</title>
+</head>
+<body>
+    <div class="container">
+        <input type="number" id="bil1">
+        <input type="number" id="bil2">
+    </div>
+    <button id='tombol'>Submit</button>
+    <div id="jawab"></div>
+    <script>
+        $("#tombol").on("click", () => {
+            data = {
+                "bil1": $("#bil1").val(),
+                "bil2": $("#bil2").val()
+            }
+           $.ajax({
+               method: "GET",
+               cache: false,
+               data: data,
+               url: "hitung.php",
+               success: function(data) {
+                   document.querySelector("#jawab").innerHTML = data;
+                   
+               }
+           }) 
+        });
+    </script>
+</body>
+</html>
