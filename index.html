@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Prak Pemweb</title>
+</head>
+<body>
+    <h2>Mangga : Rp.15.000/kg</h2>
+    <h2>Jambu : Rp.13.000/kg</h2>
+    <h2>Salak : Rp.10.000/kg</h2>
+    <form id="form-id">
+        <label for="mangga">Jumlah mangga (kg) : </label>
+        <input type="number" name="mangga" id="mangga"> <br>
+        <label for="jambu">Jumlah jambu (kg) : </label>
+        <input type="number" name="jambu" id="jambu"> <br>
+        <label for="salak">Jumlah salak (kg) : </label>
+        <input type="number" name="salak" id="salak"> <br>
+
+        <input type="submit" id="submit-btn" value="Submit">
+    </form>
+
+    <div id="hasil"></div>
+
+
+    <script>
+        
+        let formBelanja = document.getElementById('form-id');
+        document.getElementById('submit-btn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            
+            let dataForm = new FormData(formBelanja);
+
+            var respon = await fetch('proses.php', {
+                method:'POST',
+                body: dataForm,
+            });
+
+            let text = await respon.text();
+
+            var html = '<h2>Total Harga : Rp.' + text + '</h2>';
+
+            document.getElementById('hasil').innerHTML = html;
+        })
+        
+    </script>
+</body>
+</html>
