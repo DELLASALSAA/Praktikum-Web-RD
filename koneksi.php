@@ -2,10 +2,7 @@
 $host="localhost";
 $user="root";
 $password="";
-$db="belajar_ajax";
+$db="mahasiswa";
 
-$kon = mysqli_connect($host,$user,$password,$db);
-if (!$kon){
-    die("Koneksi gagal :".mysqli_connect_error());
-}
+$pdo = new PDO ('mysql:host='.$host.';dbname='.$db, $user, $password);
 ?>

@@ -1,17 +1,17 @@
 <?php
 include "koneksi.php";
-$nim=$_POST['nim'];
-$nama=$_POST['nama'];
-$prodi=$_POST['prodi'];
-$angkatan=$_POST['angkatan'];
+$id = $_GET['id'];
 
-$sql = $pdo->prepare("INSERT INTO mahasiswa(nim, nama, prodi, angkatan) VALUES (:nim,:nama,:prodi,:angkatan)");
+$nim = $_POST['nim'];
+$nama = $_POST['nama'];
+$angkatan = $_POST['angkatan'];
+
+$sql = $pdo->prepare("UPDATE mahasiswa SET nim=:nim, nama=:nama, angkatan=:angkatan WHERE nim=:id");
 $sql->bindParam(':nim', $nim);
 $sql->bindParam(':nama', $nama);
-$sql->bindParam(':prodi', $prodi);
 $sql->bindParam(':angkatan', $angkatan);
+$sql->bindParam(':id', $id);
 $execute = $sql->execute();
-
 
 if($execute) {
     echo "<script>window.location.href='index.php';</script>";
